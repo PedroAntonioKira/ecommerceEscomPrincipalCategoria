@@ -56,11 +56,6 @@ func Manejadores(path string, method string, body string, headers map[string]str
 
     fmt.Println(user)
     /*
-	//validamos la autorización del token
-	isOk, statusCode, user := validoAuthorization(path, method, headers)
-
-	fmt.Println("El IsOk: ")
-	fmt.Println(isOk)
 
 	//Verificamos que la autorización no tenga problemas
 	if !isOk {

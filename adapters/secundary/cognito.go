@@ -94,6 +94,7 @@ func ValidoToken(token string) (bool, error, string) {
 		fmt.Println("Client_id y Token_use son iguales")
 	} else {
 		fmt.Println("Client_id o Token_use no son iguales")
+        return false, err, "Client_id o Token_use no son iguales"
 	}
 
     // Verificar si Iss de datos_referencia es una subcadena de Iss de tkj
@@ -101,6 +102,7 @@ func ValidoToken(token string) (bool, error, string) {
 		fmt.Println("Iss de datos_referencia está contenido en Iss de tkj")
 	} else {
 		fmt.Println("Iss de datos_referencia no está contenido en Iss de tkj")
+        return false, err, "El userPoolId es incorrecto"
 	}
 
 	return true, nil, string(tkj.Username)
