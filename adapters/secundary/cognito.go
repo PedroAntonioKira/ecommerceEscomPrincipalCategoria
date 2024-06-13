@@ -15,20 +15,14 @@ import (
 
 //La parte de la estructura la implemente en models "type TokenJSON struct"
 
+//Verificamos que la autorización del token no tenga problemas
 func ValidoToken(token string) (bool, error, string) {
 
     //Creamos Variable para comparar los tres datos del token (userPoolId , tokenUse, clientId)
-    /*
-    var datosReferenciaToken := entities.TokenJSON{
-		Client_id: "4dheddol7j1h11ispdrnethd3g",
-		Iss:       "us-east-1_tcluVIOtv",
-		Token_use: "access",
-	}
-        */
     var datosReferenciaToken entities.TokenJSON
 
     datosReferenciaToken.Client_id = "4dheddol7j1h11ispdrnethd3g"
-    datosReferenciaToken.Iss = "us-east-1_tcluVIOtv"
+    datosReferenciaToken.Iss = "us-east-1_tcluVIOtv" // Viene siendo nuestro userPoolId
     datosReferenciaToken.Token_use = "access"
 
 	parts := strings.Split(token, ".")
@@ -84,10 +78,6 @@ func ValidoToken(token string) (bool, error, string) {
 	fmt.Printf("Iat: %d\n", tkj.Iat)
 	fmt.Printf("Client_id: %s\n", tkj.Client_id)
 	fmt.Printf("Username: %s\n", tkj.Username)
-
-	fmt.Println("SE TERMINO DE IMPRIMIR TKJ")
-
-    //Validamos datos
 
     // Comparar Client_id y Token_use
 	if datosReferenciaToken.Client_id == tkj.Client_id && datosReferenciaToken.Token_use == tkj.Token_use {
