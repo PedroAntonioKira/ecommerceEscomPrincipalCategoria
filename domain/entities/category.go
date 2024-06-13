@@ -1,4 +1,5 @@
-//Estructuras para category
+// Estructuras para category
+package entities
 
 type Category struct {
 	CategID   int    `json:"categID"`
