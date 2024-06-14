@@ -5,12 +5,11 @@ import (
 	"fmt"
 	"strconv"
     "encoding/json"
-
 	//importaciones externas (descargadas)
 	"github.com/aws/aws-lambda-go/events"
-
 	//importaciones personalizadas (creadas desde cero)
     "github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/utils"
+	//"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/domain/use_cases"
 
 )
 
@@ -23,13 +22,6 @@ func Manejadores(path string, method string, body string, headers map[string]str
 	fmt.Println("El ID tiene:")
 	fmt.Println(id)
 	fmt.Println("Se imprimio ID :")
-
-	//Prueba 02
-	id02 := request.PathParameters["Id"]
-
-	fmt.Println("El ID 02 tiene:")
-	fmt.Println(id02)
-	fmt.Println("Se imprimio ID 02:")
 
 	idn, _ := strconv.Atoi(id)
 
@@ -58,8 +50,7 @@ func Manejadores(path string, method string, body string, headers map[string]str
 		return statusCode, user
 	}
     fmt.Println("Vamos bien con cognito")
-
-    fmt.Println("Llegamos hasta aqui:")
+	
 	fmt.Println("Path1: " + path[0:19])
 	fmt.Println("Path2: " + path[16:20])
 
@@ -77,7 +68,6 @@ func Manejadores(path string, method string, body string, headers map[string]str
 }
 
 func ProcesoCategory(body string, path string, method string, user string, id int, request events.APIGatewayProxyRequest) (int, string) {
-
 	//Validamos el metodo Que estamos Recibiendo
 	switch method {
 	case "POST":
@@ -94,7 +84,10 @@ func ProcesoCategory(body string, path string, method string, user string, id in
         if(request.Resource == "/ecommerceEscom/category"){
             fmt.Println("Se deben de traer todas las categorias")
         }else if(request.Resource == "/ecommerceEscom/category/{id}"){
+			id := request.PathParameters["id"]
             fmt.Println("Se debe de traer una categoria en especifico")
+			fmt.Println(id)
+			//return use_cases.ListProductsUC(body, request)
         }else{
             fmt.Println("Algo esta mal con el Metodo Get No entra en ningun caso")
         }
