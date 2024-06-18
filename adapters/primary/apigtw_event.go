@@ -25,7 +25,6 @@ func Manejadores(path string, method string, body string, headers map[string]str
 
 	idn, _ := strconv.Atoi(id)
 
-	fmt.Println("Mostramos ID: " + id)
     fmt.Println("Mostramos IDN: ")
     fmt.Println(idn)
 	fmt.Println("Mostramos METHOD: " + method)
@@ -69,21 +68,26 @@ func Manejadores(path string, method string, body string, headers map[string]str
 
 func ProcesoCategory(body string, path string, method string, user string, id int, request events.APIGatewayProxyRequest) (int, string) {
 	//Validamos el metodo Que estamos Recibiendo
+
+	pathParams01 := request.PathParameters["id"] //Alfanumericos
+	pathParams02, _ := strconv.Atoi(pathParams01) //Numerico
+
 	switch method {
 	case "POST":
 		fmt.Println("Si entramos A POST de Category")
 		return use_cases.AddCategoryUC(body, user)
-		//return routers.InsertCategory(body, user)
 	case "PUT":
 		fmt.Println("Si entramos A PUT de Category")
-		//return routers.UpdateCategory(body, user, id)
+		return use_cases.UpdateCategoryUC(body, user, pathParams02)
 	case "DELETE":
 		fmt.Println("Si entramos A DELETE de Category")
+		return use_cases.DeleteCategoryUC(body, user, id)
 		//return routers.DeleteCategory(body, user, id)
 	case "GET":
 		fmt.Println("Si entramos A GET de Category")
         if(request.Resource == "/ecommerceEscom/category"){
             fmt.Println("Se deben de traer todas las categorias")
+			return use_cases.ListCategoryUC(body, request)
         }else if(request.Resource == "/ecommerceEscom/category/{id}"){
 			id := request.PathParameters["id"]
             fmt.Println("Se debe de traer una categoria en especifico")
@@ -161,3 +165,10 @@ func ProcesoOrder(body string, path string, method string, user string, id int, 
 }
 
 */
+
+
+//N EDRP
+
+// GCP
+
+//EMILIO, ERICKA SOFIA

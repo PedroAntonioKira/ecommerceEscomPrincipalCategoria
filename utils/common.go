@@ -4,12 +4,13 @@ import (
 	//Importaciones de go (vienen incluidas al instalar)
 	"os"
 	"fmt"
+//	"strconv"
+//	"strings"
+//	"time"
 
 	//importaciones personalizadas (creadas desde cero)
 	"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/adapters/secundary"
 	"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/domain/entities"
-	//"github.com/PedroAntonioKira/EcommerceEscomAPIREST/secretsmanager"
-	//"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/domain/entities"
 )
 
 var SecretModel entities.SecretRDSJson
@@ -68,3 +69,4 @@ func ValidoAuthorization(path string, method string, headers map[string]string) 
 
 	return true, 200, msg
 }
+

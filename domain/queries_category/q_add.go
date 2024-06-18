@@ -53,24 +53,11 @@ func AddCategoryQuery(body string, User string) (int, string) {
 
 	fmt.Println(result)
 	fmt.Println(err2)
-	
-	return 200, "{ Se inserto correctamente CategID: " + strconv.Itoa(int(result)) + "}"
-}
-
-
-/*
-func InsertCategory(body string, User string) (int, string) {
-
-
-	//Se realiza el registro de la categoria
-	result, err2 := bd.InsertCategory(t)
 
 	//Verificamos que no exista un error al intentar realizar el registro de la categoria
 	if err2 != nil {
 		return 400, "Ocurrió un error al intentar realizar el registro de la categoria " + t.CategName + " > " + err2.Error()
 	}
-
-	return 200, "{ CategID: " + strconv.Itoa(int(result)) + "}"
-
+	
+	return 200, "{ Se inserto correctamente CategID: " + strconv.Itoa(int(result)) + "}"
 }
-	*/
