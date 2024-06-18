@@ -15,7 +15,7 @@ import (
 	//importaciones personalizadas (creadas desde cero)
 	"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/adapters/primary"
 	"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/adapters/secundary"
-	"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/utils"
+	//"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/utils"
 )
 
 func main() {
@@ -63,7 +63,7 @@ func EjecutoLambda(ctx context.Context, request events.APIGatewayProxyRequest) (
 	}
 
 	//Leemos el secreto de RDS
-	utils.ReadSecret()
+	secundary.ReadSecret()
 
 	status, message := primary.Manejadores(path, method, body, header, request)
 

@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	//importaciones personalizadas (creadas desde cero)
     "github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/utils"
-	//"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/domain/use_cases"
+	"github.com/PedroAntonioKira/ecommerceEscomPrincipalCategoria/domain/use_cases"
 
 )
 
@@ -72,6 +72,7 @@ func ProcesoCategory(body string, path string, method string, user string, id in
 	switch method {
 	case "POST":
 		fmt.Println("Si entramos A POST de Category")
+		return use_cases.AddCategoryUC(body, user)
 		//return routers.InsertCategory(body, user)
 	case "PUT":
 		fmt.Println("Si entramos A PUT de Category")
