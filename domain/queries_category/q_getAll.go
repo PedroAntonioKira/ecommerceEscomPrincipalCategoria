@@ -3,7 +3,7 @@ package queries_category
 import (
 	//Importaciones de go (vienen incluidas al instalar)
 	"encoding/json"
-	"strconv"
+//	"strconv"
 
 	//"fmt"
 
@@ -18,10 +18,11 @@ import (
 )
 
 func ListCategoryQuery(body string, request events.APIGatewayProxyRequest) (int, string) {
-	var err error
+//	var err error
 	var CategId int
 	var Slug string // Es el path (CategoryPath), solo que se suele llamar así en un ecommerce
 
+/*
 	//Verificamos si recibimos el "CategId" o recibimos el "Slug"
 	if len(request.QueryStringParameters["categId"]) > 0 {
 
@@ -37,6 +38,9 @@ func ListCategoryQuery(body string, request events.APIGatewayProxyRequest) (int,
 		}
 	}
 
+*/
+	CategId = 0 // Se traera todos los datos
+	Slug = "Se traeran todos los datos"
 	//Si no se especifica por que debemos filtrar (id o path) devolvemos todas las categorias de la Base de Datos.
 	lista, err2 := database.ListCategoryQuery(CategId, Slug)
 

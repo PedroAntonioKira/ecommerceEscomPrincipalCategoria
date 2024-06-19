@@ -5,7 +5,7 @@ import (
 	"os"
 	"fmt"
 //	"strconv"
-//	"strings"
+	"strings"
 //	"time"
 
 	//importaciones personalizadas (creadas desde cero)
@@ -25,8 +25,14 @@ func ReadSecret() error {
 //Valida El Token Para ver que tenga authorization para ingresar
 
 func ValidoAuthorization(path string, method string, headers map[string]string) (bool, int, string) {
+	fmt.Println("Entramos a ValidoAuthorization")
+	fmt.Println("path:")
+	fmt.Println(path)
+	fmt.Println("method")
+	fmt.Println(method)
 	if (path == "/ecommerceEscom/product" && method == "GET") ||
-		(path == "/ecommerceEscom/category" && method == "GET") {
+		(path == "/ecommerceEscom/category" && method == "GET") ||
+		(strings.Contains(path, "/ecommerceEscom/category") && method == "GET") {
 		
 			fmt.Println("No Necesita Autorización porque es es GET")
 			return true, 200, ""

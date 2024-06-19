@@ -4,7 +4,7 @@ import (
 	//Importaciones de go (vienen incluidas al instalar)
 	"database/sql"
 	"fmt"
-	"strconv"
+//	"strconv"
 //	"strings"
 
 	//"strings"
@@ -37,6 +37,7 @@ func ListCategoryQuery(CategId int, Slug string) ([]entities.Category, error) {
 	//Declaramos la sentencia SQL para insertar la categoria
 	sentencia := "SELECT Categ_Id, Categ_Name, Categ_Path FROM category"
 
+/*
 	//Validamos si nos pidieron buscar por un ID en particular en caso que se haya especificado.
 	if CategId > 0 {
 		sentencia += " WHERE Categ_Id = " + strconv.Itoa(CategId)
@@ -46,6 +47,7 @@ func ListCategoryQuery(CategId int, Slug string) ([]entities.Category, error) {
 			sentencia += " WHERE Categ_Path LIKE '%" + Slug + "%'"
 		}
 	}
+*/
 
 	//Imprimimos la sentencia SQL
 	fmt.Println(sentencia)
@@ -79,7 +81,7 @@ func ListCategoryQuery(CategId int, Slug string) ([]entities.Category, error) {
 
 	}
 
-	fmt.Println("Select Categories > Ejecución Exitosa")
+	fmt.Println("Select Categories > Ejecución Exitosa : Optimizado01")
 
 	return Categ, nil
 }

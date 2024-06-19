@@ -68,7 +68,6 @@ func Manejadores(path string, method string, body string, headers map[string]str
 
 func ProcesoCategory(body string, path string, method string, user string, id int, request events.APIGatewayProxyRequest) (int, string) {
 	//Validamos el metodo Que estamos Recibiendo
-
 	pathParams01 := request.PathParameters["id"] //Alfanumericos
 	pathParams02, _ := strconv.Atoi(pathParams01) //Numerico
 
@@ -81,7 +80,7 @@ func ProcesoCategory(body string, path string, method string, user string, id in
 		return use_cases.UpdateCategoryUC(body, user, pathParams02)
 	case "DELETE":
 		fmt.Println("Si entramos A DELETE de Category")
-		return use_cases.DeleteCategoryUC(body, user, id)
+		return use_cases.DeleteCategoryUC(body, user, pathParams02)
 		//return routers.DeleteCategory(body, user, id)
 	case "GET":
 		fmt.Println("Si entramos A GET de Category")
@@ -92,6 +91,7 @@ func ProcesoCategory(body string, path string, method string, user string, id in
 			id := request.PathParameters["id"]
             fmt.Println("Se debe de traer una categoria en especifico")
 			fmt.Println(id)
+			return use_cases.GetCategoryUC(body, request, pathParams02)
 			//return use_cases.ListProductsUC(body, request)
         }else{
             fmt.Println("Algo esta mal con el Metodo Get No entra en ningun caso")
